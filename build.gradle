@@ -1,0 +1,47 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
+  }
+}
+
+apply plugin: "com.gradle.plugin-publish"
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "maven"
+
+// group = 'com.prot.gradle.plugin'
+
+repositories {
+  jcenter()
+  mavenCentral()
+}
+
+dependencies {
+  compile gradleApi()
+//  compile localGroovy() //not needed for Java plugins
+}
+
+pluginBundle {
+  website = 'https://github.com/zpc888/whole-test-gradle-plugin'
+  vcsUrl  = 'https://github.com/zpc888/whole-test-gradle-plugin.git'
+
+  description = 'provide integration, functional, performance, docker etc end-to-end testing gradle plugin'
+
+  plugins {
+
+    wholetestPlugin {
+	  id = 'com.prot.wholetest'
+      displayName = 'Integration, functional, performance, docker etc end-to-end testing plugin'
+      tags = ['integration testing', 'functional testing', 'performance testing', 'docker testing'
+              , 'end to end testing', 'e2e testing']
+      version = '0.2'
+    }
+
+    version = '0.2'
+  }
+}
