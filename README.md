@@ -13,37 +13,51 @@ under different folders, run after unit-test phase.
 To use this plugin, please see: https://plugins.gradle.org/plugin/com.prot.wholetest
 
 In short, for single project with gradle version greater than 2.1 and less than 4.0, using:
+```gradle
 plugins {
-  id "com.prot.wholetest" version "0.1"
+  id "com.prot.wholetest" version "0.2"         // for gradle 4.0 -
+  // id "com.prot.wholetest" version "4.0"      // for gradle version 4.0 or 4.0+
 }
+```
 
 For multi-project application, at root project, using:
 
+```gradle
 plugins {
-  id "com.prot.wholetest" version "0.1" apply false
+  id "com.prot.wholetest" version "0.2" apply false         // for gradle 4.0 -
+  // id "com.prot.wholetest" version "4.0" apply false      // for gradle version 4.0 or 4.0+
 }
+```
 
 and then:
+```gradle
 allprojects {
    apply plugin 'com.prot.wholetest'
 }
+```
 
 or (if only want to run for all sub-projects)
+```gradle
 subprojects {
    apply plugin 'com.prot.wholetest'
 }
+```
 
 or (if only want to run for projects whose name starts with 'xyz')
+```gradle
 configure( allprojects.findAll { it.name.startsWith("xyz") } ) {
    apply plugin 'com.prot.wholetest'
 }
+```
 
 or (another way)
+```gradle
 allprojects { prj ->
    if (prj.name.startsWith("xyz")) {
 	   apply plugin 'com.prot.wholetest'
    }
 }
+```
 
 Note: it only provides integrationTest with src/integTest/java and src/integTest/resources 
 sourceSets for now. It can be easily expanded to different languages such as groovy, scala,
