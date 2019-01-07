@@ -32,7 +32,9 @@ public class WholeTestingPlugin implements Plugin<Project> {
             project.getTasks().create("integrationTest", IntegrationTestTask.class, (task) -> {
                 task.setDescription("Run integration tests");
                 task.setGroup("verification");
-                task.setTestClassesDir(integrationTest.getOutput().getClassesDir());
+                task.setTestClassesDirs(integrationTest.getOutput().getClassesDirs());
+                // gradle 4.0 or update
+//                task.setTestClassesDirs(integrationTest.getOutput().getClassesDirs());
                 task.setClasspath(integrationTest.getRuntimeClasspath());
 
                 Map<String, Object> sysProps = new HashMap<>(64);

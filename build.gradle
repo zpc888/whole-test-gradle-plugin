@@ -39,9 +39,9 @@ pluginBundle {
       displayName = 'Integration, functional, performance, docker etc end-to-end testing plugin'
       tags = ['integration testing', 'functional testing', 'performance testing', 'docker testing'
               , 'end to end testing', 'e2e testing']
-      version = '0.2'
+      version = '4.0'
     }
 
-    version = '0.2'
+    version = '4.0'
   }
 }
